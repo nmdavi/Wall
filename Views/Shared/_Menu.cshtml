@@ -1,0 +1,50 @@
+﻿<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href=""><img src="~/Content/Img/menuicon.ico" height="30" width="30" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample05">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item active">
+                @Html.ActionLink("Sobre", "About", "Home", new { }, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item active">
+                @Html.ActionLink("Contato", "Contact", "Home", new { }, new { @class = "nav-link" })
+            </li>
+        </ul>
+
+        <ul class="navbar-nav">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li>@Html.ActionLink("Postar", "AddEdit", "Home", new { }, new { @class = "nav-link" })</li>
+                <li class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">@User.Identity.Name</a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown05">
+                        @if (User.Identity.Name == "Administrador")
+                        {
+                            @Html.ActionLink("Usuários", "UserList", "Admin", new { Area = "Admin" }, new { @class = "dropdown-item" })
+                        }
+                        @Html.ActionLink("LogOut", "LogOut", "Account", new { }, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Login", "Login", "Account", new { }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Registre-se", "Register", "Account", new { }, new { @class = "nav-link" })</li>
+            }
+        </ul>
+    </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="~/Scripts/popper.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>

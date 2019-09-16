@@ -1,0 +1,16 @@
+﻿@model  Wall.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Editar Usuário";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { @class = "form-signin" }))
+{
+    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", autofocus = "autofocus", required = "required", placeholder = "Seu usuário" })
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", required = "required", placeholder = "E-mail" })
+    <br />
+    <button class="btn btn-lg btn-primary btn-block">Salvar</button>
+    <button class="btn btn-block text-white">@Html.ActionLink("Cancelar", "UserList", "Admin")</button>
+}

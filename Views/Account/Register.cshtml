@@ -1,0 +1,17 @@
+﻿@model Wall.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Registrar";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-signin" }))
+{
+    <img class="mb-4" src="~/Content/Img/favicon.png" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Registre-se</h1>
+    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", autofocus = "autofocus", required = "required", placeholder = "Seu usuário" })
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", required = "required", placeholder = "E-mail" })
+    @Html.PasswordFor(x => x.Password, new { @class = "form-control", required = "required", placeholder = "Senha" })
+    @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control", required = "required", placeholder = "Confirmar senha" })
+    <br />
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Registrar</button>
+    <small>Já está registrado? @Html.ActionLink("Faça o login", "Login", "Account")</small>
+}

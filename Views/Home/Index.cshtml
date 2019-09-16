@@ -1,0 +1,37 @@
+﻿@model  IEnumerable<Wall.Models.FraseViewModel>
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+<table class="table table-striped table-bordered table-condensed table-hover auto">
+    <thead>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(x => x.Titulo)</th>
+            <th scope="col">@Html.DisplayNameFor(x => x.Frase)</th>
+            <th scope="col">@Html.DisplayNameFor(x => x.Autor)</th>
+            <th scope="col">@Html.DisplayNameFor(x => x.DataDaCriacao)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var frase in Model)
+        {
+            <tr>
+                <td>@Html.DisplayTextFor(x => frase.Titulo)</td>
+                <td>@Html.DisplayTextFor(x => frase.Frase)</td>
+                <td>@Html.DisplayTextFor(x => frase.Autor)</td>
+                <td>@Html.DisplayTextFor(x => frase.DataDaCriacao)</td>
+                @if (User.Identity.Name == frase.Autor || User.Identity.Name == "Administrador"  || 
+                    (frase.Autor == "Anônimo" && User.Identity.Name == "Administrador"))
+                {
+                    <td>
+                        @Html.ActionLink("Editar", "AddEdit", "Home", new { id = frase.Id }, new { })
+                        @Html.ActionLink("Deletar", "Delete", "Home", new { id = frase.Id }, new { })
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
