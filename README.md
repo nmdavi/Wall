@@ -1,6 +1,2 @@
 # Wall
-O site é um mural de frases autorais dos usuários, feito em ASP.NET MVC com C#.
-
-Contato: davimendonca@protonmail.com
-
-LinkedIn: www.linkedin.com/in/davimendonca
+The site is a wall of user-authored phrases, made in ASP.NET MVC with C#.
